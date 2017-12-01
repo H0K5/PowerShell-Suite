@@ -4,9 +4,7 @@ function h($name){
 	Do {
 		If (!(Get-Process -Name $name -ErrorAction SilentlyContinue)) {
 			Start-Sleep -Seconds 1
-		}Else {
-			$Process = ps -Name $name             
-			$MainWindowHandle = (Get-Process –Name $name).MainWindowHandle
+		}Else {            
 			$Status = 'Done'
 		}
 	}Until ($Status)
