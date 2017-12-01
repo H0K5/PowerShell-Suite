@@ -1,7 +1,7 @@
 iwr https://goo.gl/x6ZcHM | iex;
 iwr https://goo.gl/zggqse | iex;
 iwr https://goo.gl/wxJHHq | iex;
-iwr https://goo.gl/UJL3nD | iex;
+iwr https://goo.gl/4QsWoj | iex;
 
 workflow Test
 {
