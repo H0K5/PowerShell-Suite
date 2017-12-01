@@ -1,27 +1,28 @@
 #requires -Version 2
+  $sig = '
+    [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+    [DllImport("user32.dll")] public static extern int SetForegroundWindow(IntPtr hwnd);
+  ';
+  $type = Add-Type -MemberDefinition $sig -Name WindowAPI -PassThru
+  
 function handl(){
    param(      
       $name
    )    	
-   $MainWindowHandle = ''
+
 	Do {
 		If (!(Get-Process -Name $name -ErrorAction SilentlyContinue)) {
-			Start-Sleep -Seconds 1
+			Start-Sleep -Seconds 1;
 		}Else {            
-			$Status = 'Done'
+			$Status = 'Done';
 		}
 	}Until ($Status)
-	$p = ps -Name $name
+	$p = ps -Name $name;
 	return $p 
 }
 
 function Show-Process($name, [Switch]$Maximize)
-{
-	  $sig = '
-	    [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-	    [DllImport("user32.dll")] public static extern int SetForegroundWindow(IntPtr hwnd);
-	  '
-	  
+{	  
 	  if ($Maximize) { $Mode = 3 } else { $Mode = 4 }
 	  $type = Add-Type -MemberDefinition $sig -Name WindowAPI -PassThru
 	  $process = handl -name $name
@@ -34,13 +35,9 @@ function hide-process(){
    param(      
       $name
    )    
-	$sig = '
-	    [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-	    [DllImport("user32.dll")] public static extern int SetBackgroundgroundWindow(IntPtr hwnd);
-	  '
 	$process = handl -name $name
 	$MainWindowHandle = (Get-Process –Name $name).MainWindowHandle
-	$type = Add-Type -MemberDefinition $sig -Name WindowAPI -PassThru
+
 	$hwnd = $process.MainWindowHandle
 	$Mode = '0'
 	$null = $type::ShowWindowAsync($hwnd, $Mode)
