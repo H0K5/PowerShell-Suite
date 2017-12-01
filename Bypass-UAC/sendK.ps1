@@ -30,7 +30,10 @@ function Show-Process($name, [Switch]$Maximize)
 	  $null = $type::SetForegroundWindow($hwnd) 
 }
 
-function hide-process($name){
+function hide-process(){
+   param(      
+      $name
+   )    
 	$sig = '
 	    [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 	    [DllImport("user32.dll")] public static extern int SetBackgroundgroundWindow(IntPtr hwnd);
@@ -44,16 +47,20 @@ function hide-process($name){
 }
 
 
-function kill-window($name){	
-	$process = handl -name $name          
-	Show-Process -Process $Process
+function kill-window(){	
+   param(      
+      $name
+   )             
+	Show-Process -Process $name
 	Add-Type -AssemblyName System.Windows.Forms
 	[System.Windows.Forms.SendKeys]::SendWait('%{F4}');
 	$Status = 'Done'
 }
 
-function send-keys($name,$cmd){	
-	$process = handl -name $name          
+function send-keys(){	
+   param(      
+      $name, $cmd
+   )            
 	Show-Process -Process $name
 	Add-Type -AssemblyName System.Windows.Forms
 	[System.Windows.Forms.SendKeys]::SendWait($cmd);
