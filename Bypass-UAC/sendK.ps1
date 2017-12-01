@@ -50,3 +50,12 @@ function kill-window($name){
 	[System.Windows.Forms.SendKeys]::SendWait('%{F4}');
 	$Status = 'Done'
 }
+
+function send-keys($name,$cmd){	
+	$Process = h($name)	          
+	Show-Process -Process $name
+	Add-Type -AssemblyName System.Windows.Forms
+	[System.Windows.Forms.SendKeys]::SendWait($cmd);
+	$Status = 'Done'
+}
+
