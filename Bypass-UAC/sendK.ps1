@@ -1,8 +1,9 @@
 #requires -Version 2
-function h(){
+function handl(){
    param(      
       $name
-   )    	$MainWindowHandle = ''
+   )    	
+   $MainWindowHandle = ''
 	Do {
 		If (!(Get-Process -Name $name -ErrorAction SilentlyContinue)) {
 			Start-Sleep -Seconds 1
