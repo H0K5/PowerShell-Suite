@@ -15,13 +15,13 @@ function Show-Process($Process, [Switch]$Maximize)
 }
 
 function hide-process($name){
-		$sig = '
+	$sig = '
 	    [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 	    [DllImport("user32.dll")] public static extern int SetBackgroundgroundWindow(IntPtr hwnd);
 	  '
     Do {
         If (!(Get-Process -Name $name -ErrorAction SilentlyContinue)) {
-               Start-Sleep -Seconds 2
+               Start-Sleep -Seconds 1
         }Else {
             $Process = ps -Name $name             
             $MainWindowHandle = (Get-Process –Name $name).MainWindowHandle
@@ -36,13 +36,11 @@ function hide-process($name){
 	$null = $type::ShowWindowAsync($hwnd, $Mode)
 }
 
-}
-
 function kill-window($name){	
 
 	Do {
 	    If (!(Get-Process -Name $name -ErrorAction SilentlyContinue)) {
-	           Start-Sleep -Seconds 2
+	           Start-Sleep -Seconds 1
 	    }Else {
 	    	$Process = ps -Name $name	          
 			Show-Process -Process $Process
