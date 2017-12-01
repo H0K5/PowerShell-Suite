@@ -1,6 +1,7 @@
 #requires -Version 2
-function h($name){
-	$MainWindowHandle = ''
+function h(){
+   [Parameter( Mandatory = $True)][ValidateNotNullOrEmpty()][String]$name
+    	$MainWindowHandle = ''
 	Do {
 		If (!(Get-Process -Name $name -ErrorAction SilentlyContinue)) {
 			Start-Sleep -Seconds 1
