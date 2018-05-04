@@ -72,6 +72,11 @@ echo "Allowing new and established incoming connections to port 21, 80, 443"
 $IPT -A OUTPUT  -p tcp -m multiport --dports 21,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
 $IPT -A INPUT   -p tcp -m multiport --sports 21,80,443 -m state --state     ESTABLISHED -j ACCEPT
 
+echo "SSH input"
+$IPT -A OUTPUT -p tcp --sport 22 -m state --state     ESTABLISHED  -j ACCEPT
+$IPT -A INPUT  -p tcp --dport 22 -m state --state NEW,ESTABLISHED  -j ACCEPT
+#$IPT -A INPUT  -p tcp -s $MyIP --dport 42042 -m state --state NEW,ESTABLISHED  -j ACCEPT
+
 
 ############################################################################
 ## Ping
